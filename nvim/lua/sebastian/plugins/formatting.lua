@@ -18,7 +18,7 @@ return {
         timeout_ms = 1000,
       },
     })
--- no sure what this does
+
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
       conform.format({
         lsp_fallback = true,

@@ -26,17 +26,27 @@ return {
       },
     },
     "saadparwaiz1/cmp_luasnip",
-
-    -- Adds other completion capabilities.
-    --  nvim-cmp does not ship with all sources by default. They are split
-    --  into multiple repos for maintenance purposes.
+    "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    --"hrsh7th/cmp-nvim-lsp",
-    -- { "antosha417/nvim-lsp-file-operations", config = true },
-    -- TODO: replace for lazydev.nvim
-    -- { "folke/neodev.nvim", opts = {} },
+    { "antosha417/nvim-lsp-file-operations", config = true },
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          -- Load luvit types when the `vim.uv` word is found
+          { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        },
+      },
+    },
+    { 'Bilal2453/luvit-meta',                lazy = true },
+    { 'j-hui/fidget.nvim',                   opts = {} },
   },
+
+
+
+
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
@@ -50,7 +60,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
       callback = function(ev)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -99,7 +109,8 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
