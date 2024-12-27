@@ -4,7 +4,8 @@ local keymap = vim.keymap -- for conciseness
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- unhighlight searches with escape key
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- unhighlight searches with escape key
+keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>")
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically

@@ -80,6 +80,7 @@ return {
     })
 
     vim.cmd("colorscheme rose-pine-main")
+    vim.cmd("highlight Visual guibg=#202020 guifg=NONE")
     -- vim.cmd("colorscheme rose-pine-main")
     -- vim.cmd("colorscheme rose-pine-moon")
     -- vim.cmd("colorscheme rose-pine-dawn")
