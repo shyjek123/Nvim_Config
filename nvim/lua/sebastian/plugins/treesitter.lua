@@ -30,6 +30,7 @@ return {
         "gitignore",
         "vimdoc",
         "c",
+        "zig",
       },
       incremental_selection = {
         enable = true,
@@ -40,6 +41,10 @@ return {
           node_decremental = "<bs>",
         },
       },
+      modules = {},
+      auto_install = false,
+      sync_install = false,
+      ignore_install = {},
     })
   end,
 }
