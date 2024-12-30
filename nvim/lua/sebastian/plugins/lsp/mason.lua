@@ -29,7 +29,9 @@ return {
       ensure_installed = {
         "lua_ls",
         "ts_ls",
-        "eslint",
+        "html",
+        "cssls",
+        "tailwindcss",
       },
     })
 
@@ -37,6 +39,7 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
+        "eslint_d",
       },
     })
   end,
