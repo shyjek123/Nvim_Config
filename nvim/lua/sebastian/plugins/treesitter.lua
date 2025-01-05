@@ -2,24 +2,26 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
   config = function()
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
     -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
+    treesitter.setup({
+      -- enable syntax highlighting
       highlight = {
         enable = true,
       },
       -- enable indentation
       indent = { enable = true },
+
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
       },
+
+      fold = { enable = true },
+
       -- ensure these language parsers are installed
       ensure_installed = {
         "json",
@@ -31,6 +33,10 @@ return {
         "vimdoc",
         "c",
         "zig",
+        "hurl",
+        "css",
+        "html",
+        "python",
       },
       incremental_selection = {
         enable = true,
@@ -42,9 +48,15 @@ return {
         },
       },
       modules = {},
-      auto_install = false,
+      auto_install = true,
       sync_install = false,
       ignore_install = {},
     })
+    -- Set fold method to 'expr' and use Treesitter's fold expression
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    -- Optional: Set fold level (0 means all folds are closed)
+    -- Disable folding at startup
+    vim.opt.foldlevel = 99
   end,
 }

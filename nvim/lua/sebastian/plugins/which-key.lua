@@ -6,6 +6,7 @@ return { -- Useful plugin to show you pending keybinds.
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 500
+    --vim.api.nvim_del_keymap('n', '<leader>ee')
   end,
   opts = {
     icons = {
@@ -53,7 +54,7 @@ return { -- Useful plugin to show you pending keybinds.
       { "<leader>s", group = "[S]earch" },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>t", group = "[T]oggle" },
-      { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+      { "<leader>h", group = "[]", mode = { "n", "v" } },
     },
   },
 }
