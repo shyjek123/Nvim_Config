@@ -6,14 +6,13 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim" },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
-    { "ThePrimeagen/harpoon",                    branch = "harpoon2" }
+    { "ThePrimeagen/harpoon", branch = "harpoon2" },
   },
 
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local transform_mod = require("telescope.actions.mt").transform_mod
-
 
     local trouble = require("trouble")
     local trouble_telescope = require("trouble.sources.telescope")
@@ -25,7 +24,6 @@ return {
       end,
     })
 
-
     local harpoon = require("harpoon")
     local function get_selections()
       local file_paths = {}
@@ -35,14 +33,13 @@ return {
       return file_paths
     end
 
-
     telescope.setup({
       defaults = {
         path_display = { "smart" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-            ["<C-j>"] = actions.move_selection_next,     -- move to next result
+            ["<C-j>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
             ["<C-t>"] = trouble_telescope.open,
           },
@@ -61,10 +58,13 @@ return {
     keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
     keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-    keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-    keymap.set("n", "<leader>sg", function() builtin.live_grep({ search_dirs = get_selections() }) end,
-      { desc = "[S]earch by [G]rep" })
+    keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch current [W]ord" })
+    keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>", { desc = "[S]earch by [G]rep" })
+    --keymap.set("n", "<leader>sg", function()
+    -- builtin.live_grep({ search_dirs = get_selections() })
+    --end, { desc = "[S]earch by [G]rep" })
     keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
     keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
