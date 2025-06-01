@@ -27,14 +27,12 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "lua_ls",
         "ts_ls",
         "html",
-        "cssls",
         "tailwindcss",
-        "zls",
+        "lua_ls",
         "pyright",
-        "jsonls",
+        "clangd",
       },
       automatic_installation = true,
     })
@@ -43,8 +41,10 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
-        "eslint_d", --JS linter
-        "biome",
+        "isort", -- python formatter
+        "black", -- python formatter
+        "pylint",
+        "eslint_d",
       },
     })
   end,

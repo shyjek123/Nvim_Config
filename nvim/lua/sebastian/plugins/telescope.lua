@@ -50,7 +50,6 @@ return {
     -- Enable Telescope extensions if they are installed
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
-
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
     local builtin = require("telescope.builtin")
@@ -59,10 +58,9 @@ return {
     keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
     keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch current [W]ord" })
-    keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>", { desc = "[S]earch by [G]rep" })
-    --keymap.set("n", "<leader>sg", function()
-    -- builtin.live_grep({ search_dirs = get_selections() })
-    --end, { desc = "[S]earch by [G]rep" })
+    keymap.set("n", "<leader>sg", function()
+      builtin.live_grep({ search_dirs = get_selections() })
+    end, { desc = "[S]earch by [G]rep" })
     keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
     keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
