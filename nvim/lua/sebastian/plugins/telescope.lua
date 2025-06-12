@@ -6,7 +6,6 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim" },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
-    { "ThePrimeagen/harpoon", branch = "harpoon2" },
   },
 
   config = function()
@@ -23,15 +22,6 @@ return {
         trouble.toggle("quickfix")
       end,
     })
-
-    local harpoon = require("harpoon")
-    local function get_selections()
-      local file_paths = {}
-      for _, item in ipairs(harpoon:list().items) do
-        table.insert(file_paths, item.value)
-      end
-      return file_paths
-    end
 
     telescope.setup({
       defaults = {

@@ -2,7 +2,6 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
-
 --line nums to be relative and turned on
 opt.relativenumber = true
 opt.number = true

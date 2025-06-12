@@ -1,5 +1,0 @@
-Notes on Nvim Config,
-  Things I notice that I may want to add to or remove from my current config\
-
-Notes:
-   learn more about text objs and substituting/replacing efficiently 
