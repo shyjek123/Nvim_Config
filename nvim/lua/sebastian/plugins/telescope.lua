@@ -8,7 +8,7 @@ return {
     "folke/todo-comments.nvim",
   },
 
-  config = function()
+  config = function(vim)
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local transform_mod = require("telescope.actions.mt").transform_mod
@@ -18,7 +18,7 @@ return {
 
     -- or create your custom action
     local custom_actions = transform_mod({
-      open_trouble_qflist = function(prompt_bufnr)
+      open_trouble_qflist = function()
         trouble.toggle("quickfix")
       end,
     })
@@ -44,29 +44,23 @@ return {
     local keymap = vim.keymap -- for conciseness
     local builtin = require("telescope.builtin")
     keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+    keymap.set("n", "rn", vim.lsp.buf.rename, { desc = "[R]e[N]ame" })
     keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
     keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
     keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch current [W]ord" })
-    keymap.set("n", "<leader>sg", function()
-      builtin.live_grep({ search_dirs = get_selections() })
-    end, { desc = "[S]earch by [G]rep" })
     keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
     keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-    -- Slightly advanced example of overriding default behavior and theme
     keymap.set("n", "<leader>/", function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
+        winblend = 0,
         previewer = false,
       }))
     end, { desc = "[/] Fuzzily search in current buffer" })
-
-    -- It's also possible to pass additional configuration options.
-    --  See `:help telescope.builtin.live_grep()` for information about particular keys
     keymap.set("n", "<leader>s/", function()
       builtin.live_grep({
         grep_open_files = true,

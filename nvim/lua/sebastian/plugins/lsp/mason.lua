@@ -29,8 +29,8 @@ return {
       ensure_installed = {
         "ts_ls",
         "html",
-        "tailwindcss",
         "lua_ls",
+        "tailwindcss",
         "pyright",
         "clangd",
       },
@@ -39,10 +39,10 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "prettier", -- prettier formatter
-        "stylua", -- lua formatter
         "isort", -- python formatter
         "black", -- python formatter
         "pylint",
+        "stylua",
         "eslint_d",
       },
     })

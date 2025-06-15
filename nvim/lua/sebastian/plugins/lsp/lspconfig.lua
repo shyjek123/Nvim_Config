@@ -6,7 +6,7 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
-  config = function()
+  config = function(vim)
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
@@ -17,7 +17,6 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -45,7 +44,7 @@ return {
         keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
         opts.desc = "Smart rename"
-        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+        keymap.set("n", "rn", vim.lsp.buf.rename, opts) -- smart rename
 
         opts.desc = "Show buffer diagnostics"
         keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
@@ -80,18 +79,19 @@ return {
 
     mason_lspconfig.setup({
       -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
+      handlers = {
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+      },
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        lspconfig.lua_ls.setup({
           capabilities = capabilities,
           settings = {
             Lua = {
-              -- make the language server recognize "vim" global
               diagnostics = {
                 globals = { "vim" },
               },
