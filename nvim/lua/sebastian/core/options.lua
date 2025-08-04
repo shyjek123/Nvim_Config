@@ -12,7 +12,7 @@ opt.shiftwidth = 2 -- indents = 2 spaces
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
-opt.wrap = true
+opt.wrap = false
 
 -- search setings
 opt.ignorecase = true

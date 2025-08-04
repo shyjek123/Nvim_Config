@@ -20,10 +20,10 @@ return {
         FIX = {
           icon = " ", -- icon used for the sign, and in search results
           color = "error", -- can be a hex color, or a named color (see below)
-          alt = { "FAILED", "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+          alt = { "FAILED", "FIXME", "BUG", "FIXIT", "ISSUE", "REMOVE", "ERROR" }, -- a set of other keywords that all map to this FIX keywords
           -- signs = false, -- configure signs for some keywords individually
         },
-        TODO = { icon = " ", color = "#04fbe3", alt = { "PASSED", "PLAN" } },
+        TODO = { icon = " ", color = "#04fbe3", alt = { "ADD", "PASSED", "PLAN" } },
         HACK = { icon = " ", color = "warning" },
         WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
         PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },

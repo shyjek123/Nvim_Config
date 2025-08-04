@@ -82,13 +82,6 @@ return {
     })
 
     vim.cmd("colorscheme rose-pine")
-    --vim.cmd("highlight Visual guibg=#333333")
-    --vim.cmd("highlight Search guibg=#555555")
-    --vim.cmd("highlight IncSearch guibg=#444444")
-
-    -- vim.cmd("colorscheme rose-pine-main")
-    -- vim.cmd("colorscheme rose-pine-moon")
-    -- vim.cmd("colorscheme rose-pine-dawn")
   end,
 }
 
@@ -97,3 +90,4 @@ return {
 --      Tokyko Night (the normal and Josean versions)
 --      rose pine
 --      sonokai/andromeda style
+--      Forest Night - Ethereal

@@ -8,11 +8,11 @@ return {
     "folke/todo-comments.nvim",
   },
 
-  config = function(vim)
+  config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local transform_mod = require("telescope.actions.mt").transform_mod
-
+    local flash = require("flash").toggle()
     local trouble = require("trouble")
     local trouble_telescope = require("trouble.sources.telescope")
 

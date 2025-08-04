@@ -6,7 +6,7 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
-  config = function(vim)
+  config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
