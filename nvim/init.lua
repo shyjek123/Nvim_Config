@@ -1,2 +1,2 @@
-require("sebastian.core")
-require("sebastian.lazy")
+require("core")
+require("config.lazy")

@@ -1,5 +1,3 @@
--- i did change a few key binds later double check that they match up
-
 return { -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
   event = "VeryLazy", -- Sets the loading event to 'VimEnter'

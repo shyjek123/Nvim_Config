@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  version="*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim" },
@@ -13,16 +13,8 @@ return {
     local actions = require("telescope.actions")
     local transform_mod = require("telescope.actions.mt").transform_mod
     local flash = require("flash").toggle()
-    local trouble = require("trouble")
-    local trouble_telescope = require("trouble.sources.telescope")
 
-    -- or create your custom action
-    local custom_actions = transform_mod({
-      open_trouble_qflist = function()
-        trouble.toggle("quickfix")
-      end,
-    })
-
+ 
     telescope.setup({
       defaults = {
         path_display = { "smart" },
@@ -30,8 +22,6 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
-            ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-            ["<C-t>"] = trouble_telescope.open,
           },
         },
       },
@@ -44,12 +34,10 @@ return {
     local keymap = vim.keymap -- for conciseness
     local builtin = require("telescope.builtin")
     keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-    keymap.set("n", "rn", vim.lsp.buf.rename, { desc = "[R]e[N]ame" })
     keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
     keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
     keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch current [W]ord" })
-    keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
     keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })

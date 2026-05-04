@@ -84,10 +84,3 @@ return {
     vim.cmd("colorscheme rose-pine")
   end,
 }
-
--- Other color schemes you like
---      Carbon Fox part of the night fox collection
---      Tokyko Night (the normal and Josean versions)
---      rose pine
---      sonokai/andromeda style
---      Forest Night - Ethereal
