@@ -1,15 +1,28 @@
--- vim.cmd("colorscheme industry")
--- INFO: this is midnight.nvim theme
 return {
   {
-    "dasupradyumna/midnight.nvim",
+    dir = vim.fn.stdpath("config"),
+    name = "cursor-dark-local",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("midnight")
+      vim.o.termguicolors = true
+      vim.o.background = "dark"
+      vim.cmd.colorscheme("cursor-dark")
     end,
   },
 }
+-- vim.cmd("colorscheme industry")
+-- INFO: this is midnight.nvim theme
+-- return {
+--   {
+--     "dasupradyumna/midnight.nvim",
+--     lazy = false,
+--     priority = 1000,
+--     config = function()
+--       vim.cmd.colorscheme("midnight")
+--     end,
+--   },
+-- }
 
   -- INFO: this is grubox theme
   -- {
