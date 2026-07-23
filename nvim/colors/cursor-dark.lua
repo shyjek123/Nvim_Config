@@ -317,14 +317,4 @@ local function apply_cursor_dark()
 end
 
 -- Activation for lazy.nvim (paste into theme.lua if you want it on disk):
-return {
-  {
-    dir = vim.fn.stdpath("config"),
-    name = "cursor-dark-local",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      apply_cursor_dark()
-    end,
-  },
-}
+apply_cursor_dark()

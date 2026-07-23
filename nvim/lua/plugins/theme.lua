@@ -23,7 +23,6 @@ return {
 --     end,
 --   },
 -- }
-
   -- INFO: this is grubox theme
   -- {
   --   "ellisonleao/gruvbox.nvim",
@@ -58,4 +57,5 @@ return {
 -- 		vim.cmd("colorscheme rose-pine")
 -- 	end
 -- }
+
 
